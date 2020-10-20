@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Welcome {% endblock %}
+
+{% block content %}
+    <marquee style="font-family: Dialog,cursive"> Hi, This website is designed & developed by Dipanshu Pandey. To know more about me, just go to the ABOUT page.</marquee>
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="border-radius: 10%">
+          <img src="{% static 'img/bg1.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'img/bg2.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'img/bg3.jpeg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'img/bg4.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+    {% if posts %}
+        {% for post in posts %}
+            <div class="container-fluid m-3">
+                <div class="col-md-12 text-center" style="border: 2px solid; border-radius: 25%;">
+                    <h4 class="text-center" style="font-family: Magneto,fantasy"><u>{{ post.title }}</u></h4>
+                    <h5 style="font-family: Monospaced,monospace">{{ post.content }}</h5>
+                   <div class="row">
+                    <div class="col-md-4">Posted on: {{ post.post_date }}</div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 text-center">
+                        <h4 style="font-family: Onyx,sans-serif">- {{ post.writer }}</h4>
+                    </div>
+                   </div>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <div class="col-md-12">
+            NO MORE POSTS AVAILABLE!!!
+        </div>
+    {% endif %}
+
+    <!-- pagination -->
+
+    <div class="row">
+        <div class="col-md-12">
+          {% if posts.has_other_pages %}
+          <ul class="pagination justify-content-center">
+            {% if posts.has_previous %}
+              <li class="page-item">
+                <a href="?page={{ posts.previous_page_number }}" class="page-link">Previous
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link">Previous
+                </a>
+              </li>
+            {% endif %}
+            {% for i in posts.paginator.page_range %}
+              {% if posts.number == i %}
+                <li class="page-item active">
+                 <a class="page-link">{{i}}
+                 </a>
+                </li>
+              {% else %}
+                <li class="page-item">
+                  <a href="?page={{i}}" class="page-link">{{i}}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            {% if posts.has_next %}
+              <li class="page-item">
+                <a href="?page={{ posts.next_page_number }}" class="page-link">Next
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link">Next
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+          {% endif %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

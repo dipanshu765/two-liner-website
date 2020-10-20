@@ -1,0 +1,82 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Deep Mean Lines {% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'img/logo.jpg' %}" width="80" height="30" alt="" loading="lazy">
+        </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li
+          {% if '/' == request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+
+        </ul>
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center">
+            <div class="card" style="color: #3B5998; border: 2px solid; border-color: #3B5998; background-color: #333333; font-weight: bold;">Welcome DEAP-MEAN LINES</div>
+        </div>
+        <div class="col-md-4" style="color: white;">
+          <i class="fas fa-phone"></i> (+91)-7388975483
+        </div>
+      </div>
+    </nav>
+
+
+    {% block content %}{% endblock %}
+
+
+
+
+    <footer>
+       <div class="container-fluid bg-dark">
+        <div class="col-md-12" style="text-align: center; color: white;" >
+                <!-- Add font awesome icons -->
+           <div class="col-md-12 mr-3 p-1" style="margin-left: 45%">
+            <a href="https://www.facebook.com/dipanshu.pandey.714" class="fa fa-facebook m-1"></a>
+            <a href="#" class="fa fa-twitter m-1"></a>
+            <a href="https://instagram.com/bigdey__nawab" class="fa fa-instagram m-1"></a>
+            <a href="https://www.linkedin.com/in/deepanshu-panday-068365191" class="fa fa-linkedin m-1"></a>
+           </div>
+            Copyright(2020) All Rights Reserved by <a href="#"> Dipanshu Pandey</a> <br>
+
+            <h5>
+                <div class="spinner-grow text-primary"></div>
+                Thanks For Visit
+                <div class="spinner-grow text-danger"></div>
+            </h5>
+        </div>
+       </div>
+
+
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
